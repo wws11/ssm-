@@ -190,6 +190,12 @@
             <version>1.0.18</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.18</version>
+        </dependency>
+
         <!-- disconf -->
         <!--  <dependency>
               <groupId>com.baidu.disconf</groupId>

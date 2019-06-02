@@ -33,6 +33,8 @@ public class BookServiceImpl implements BookService {
 	private AppointmentDao appointmentDao;
 
 
+
+	
 	@Override
 	@DataSource("dataSource1")
 	public Book getById(long bookId) {
@@ -40,7 +42,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	@DataSource("dataSource2")
+	@DataSource("dataSource1")
 	public List<Book> getList() {
 		return bookDao.queryAll(0, 1000);
 	}
