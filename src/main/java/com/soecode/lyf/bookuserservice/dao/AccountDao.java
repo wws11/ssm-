@@ -1,6 +1,6 @@
-package com.soecode.lyf.dao;
+package com.soecode.lyf.bookuserservice.dao;
 
-import com.soecode.lyf.entity.User;
+import com.soecode.lyf.bookuserservice.pojo.User;
 import org.apache.ibatis.annotations.Param;
 
 
@@ -19,5 +19,5 @@ public interface AccountDao {
      * @version 2.1
      **/
 
-    User getUserById(@Param("id") String id);
+   User getUserById(@Param("id") String id);
 }

@@ -1,7 +1,7 @@
-package com.soecode.lyf.web;
+package com.soecode.lyf.bookuserservice.controller;
 
-import com.soecode.lyf.entity.User;
-import com.soecode.lyf.service.UserService;
+import com.soecode.lyf.bookuserservice.pojo.User;
+import com.soecode.lyf.bookuserservice.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,9 @@
-package com.soecode.lyf.service.impl;
+package com.soecode.lyf.bookuserservice.service.impl;
 
-import com.soecode.lyf.dao.AccountDao;
-import com.soecode.lyf.data.DataSource;
-import com.soecode.lyf.entity.User;
-import com.soecode.lyf.service.UserService;
+import com.soecode.lyf.bookuserservice.dao.AccountDao;
+import com.soecode.lyf.bookuserservice.pojo.User;
+import com.soecode.lyf.bookuserservice.service.UserService;
+import com.soecode.lyf.datasource.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl   implements UserService {
 
     @Autowired
-    private AccountDao  accountDao;
+    private AccountDao accountDao;
 
     @Override
     @DataSource("dataSource2")

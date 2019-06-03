@@ -1,9 +1,8 @@
-package com.soecode.lyf.service;
+package com.soecode.lyf.bookuserservice.service;
+
+import com.soecode.lyf.bookuserservice.pojo.Book;
 
 import java.util.List;
-
-import com.soecode.lyf.dto.AppointExecution;
-import com.soecode.lyf.entity.Book;
 
 /**
  * 业务接口：站在"使用者"角度设计接口 三个方面：方法定义粒度，参数，返回类型（return 类型/异常）
@@ -25,13 +24,6 @@ public interface BookService {
 	 */
 	List<Book> getList();
 
-	/**
-	 * 预约图书
-	 * 
-	 * @param bookId
-	 * @param studentId
-	 * @return
-	 */
-	AppointExecution appoint(long bookId, long studentId);
+
 
 }

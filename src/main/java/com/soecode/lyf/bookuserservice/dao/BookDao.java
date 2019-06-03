@@ -1,11 +1,9 @@
-package com.soecode.lyf.dao;
+package com.soecode.lyf.bookuserservice.dao;
 
-import java.util.Date;
-import java.util.List;
-
+import com.soecode.lyf.bookuserservice.pojo.Book;
 import org.apache.ibatis.annotations.Param;
 
-import com.soecode.lyf.entity.Book;
+import java.util.List;
 
 public interface BookDao {
 

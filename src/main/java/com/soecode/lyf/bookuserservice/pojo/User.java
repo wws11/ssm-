@@ -1,4 +1,4 @@
-package com.soecode.lyf.entity;
+package com.soecode.lyf.bookuserservice.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

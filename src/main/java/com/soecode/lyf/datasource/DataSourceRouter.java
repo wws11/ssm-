@@ -1,4 +1,4 @@
-package com.soecode.lyf.data;
+package com.soecode.lyf.datasource;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 

@@ -25,7 +25,7 @@ public class Swagger2Config extends WebMvcConfigurationSupport {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo()).select()
                 //扫描指定包中的swagger注解 默认只支持单个包路径扫描，可以通过配置实现多个包路径的匹配
-                //.apis(RequestHandlerSelectors.basePackage("com.soecode.lyf.web"))
+                //.apis(RequestHandlerSelectors.basePackage("com.soecode.lyf.book.web"))
                 //扫描所有有注解的api，用这种方式更灵活
                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())

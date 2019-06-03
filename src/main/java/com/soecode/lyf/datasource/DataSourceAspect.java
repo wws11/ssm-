@@ -1,4 +1,4 @@
-package com.soecode.lyf.data;
+package com.soecode.lyf.datasource;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
@@ -31,7 +31,7 @@ public class DataSourceAspect {
     /**
      * 切入点 service包及子孙包下的所有类
      */
-    @Pointcut("execution(* com.soecode.lyf.service..*.*(..))")
+    @Pointcut("execution(* com.soecode.lyf.bookuserservice..*.*(..))")
     public void aspect() {
     }
 

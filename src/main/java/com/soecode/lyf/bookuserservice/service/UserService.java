@@ -1,6 +1,7 @@
-package com.soecode.lyf.service;
+package com.soecode.lyf.bookuserservice.service;
 
-import com.soecode.lyf.entity.User;
+
+import com.soecode.lyf.bookuserservice.pojo.User;
 
 /**
  * @Description
