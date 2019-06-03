@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
  * @Author DJZ-WWS
  * @Date 2019/6/2 18:06
  */
-/*@Data
+@Data
 @AllArgsConstructor
-@NoArgsConstructor*/
+@NoArgsConstructor
 public class User {
 
     private   String  id;
