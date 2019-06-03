@@ -1,6 +1,8 @@
 package com.soecode.lyf.dao;
 
-import java.util.List;
+import com.soecode.lyf.entity.User;
+import org.apache.ibatis.annotations.Param;
+
 
 /**
  * @Description
@@ -8,6 +10,14 @@ import java.util.List;
  * @Date 2019/6/2 18:05
  */
 public interface AccountDao {
+    /**根据用户的id查询用户
+     * @param
+     * @return
+     * @throws Exception
+     * @author weiwensi
+     * @date 8:35 2019/6/3
+     * @version 2.1
+     **/
 
-    public List<String>  getUserName();
+    User getUserById(@Param("id") String id);
 }

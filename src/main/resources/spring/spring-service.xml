@@ -30,4 +30,16 @@
 	<tx:annotation-driven  proxy-target-class="true" order="2"/>
 	<!-- 开启对 @Aspect 的支持-->
 	<aop:aspectj-autoproxy/>
+
+	<!-- 解决java.lang.IllegalArgumentException: No converter found for return value of type: -->
+	<!--<bean id="jsonHttpMessageConverter"
+		  class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="jsonHttpMessageConverter"/>
+			</list>
+		</property>
+	</bean>-->
 </beans>
