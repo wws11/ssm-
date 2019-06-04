@@ -1,15 +1,15 @@
 package com.soecode.lyf.log.aspect;
 
+import com.mchange.v1.util.ArrayUtils;
 import com.soecode.lyf.datasource.DataSourceAspect;
 import com.soecode.lyf.log.annatation.LogRequire;
+import com.soecode.lyf.log.annatation.LogUser;
 import com.soecode.lyf.log.pojo.LogInfo;
 import com.soecode.lyf.log.service.LogService;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
-
 import org.aspectj.lang.annotation.Pointcut;
-
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.UnknownHostException;
@@ -27,7 +29,7 @@ import java.util.Enumeration;
 
 
 /**
- * @Description  日志切面
+ * @Description 日志切面
  * @Author DJZ-WWS
  * @Date 2019/6/3 14:04
  */
@@ -37,7 +39,7 @@ import java.util.Enumeration;
 public class SysLogAspect {
     static Logger logger = LoggerFactory.getLogger(DataSourceAspect.class);
     @Autowired
-  private LogService logService;
+    private LogService logService;
 
     @Pointcut("@annotation(com.soecode.lyf.log.annatation.LogRequire)")
     public void log() {
@@ -45,39 +47,60 @@ public class SysLogAspect {
 
     @After("log()")
     public void doAfter(JoinPoint joinPoint) throws UnknownHostException {
-     System.out.println("=====SysLogAspect后置通知开始=====，开始记录日志信息");
-         Class<?> target = joinPoint.getTarget().getClass();
-         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-         Method method = signature.getMethod();
-         //获取注解上的值
-         LogRequire logRequire = null;
-         logRequire = this.getLogRequire(target, method);
-         //从接口初始化
-         if (logRequire == null) {
-             for (Class<?> clazz : target.getInterfaces()) {
-                 logRequire = getLogRequire(clazz, method);
-                 if (logRequire != null) {
-                     break;//从某个接口中一旦发现注解，不再循环
-                 }
-             }
-         }
-            LogInfo logInfo = new LogInfo();
-         if(logRequire!=null&& (!StringUtils.isEmpty(logRequire.operationExplain()))&&(!StringUtils.isEmpty(logRequire.operationFunction()))&&(!StringUtils.isEmpty(logRequire.operationModel()))){
-             ////调用日志处理类去处理我们的日志
-             logInfo.setOperationModel(logRequire.operationModel());
-             logInfo.setOperationFunction(logRequire.operationFunction());
-             logInfo.setOperationExplain(logRequire.operationExplain());
-             logInfo.setIp(this.getIp());
-             logInfo.setOperationTime(new Date());
-             logService.saveLog(logInfo);
-         }
+        System.out.println("=====SysLogAspect后置通知开始=====，开始记录日志信息");
+        LogInfo logInfo = new LogInfo();
+        //记录基本信息
+        Class<?> target = joinPoint.getTarget().getClass();
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+        Method method = signature.getMethod();
+        Parameter[] parameters = method.getParameters();
+        //记录用户信息  获取参数里面加LogUser注解的值，表示用户信息
+        //获取参数上所有的注解
+        Annotation[][] parameterAnnotations = method.getParameterAnnotations();
+        //判断注解LogUser是否存在
+
+        for (Annotation[] paraeterAnnotation : parameterAnnotations) {
+            //获取注解的索引
+            int paramIndex = ArrayUtils.indexOf(parameterAnnotations, paraeterAnnotation);
+            //获取注解标记的值
+
+            for (Annotation annotation : paraeterAnnotation) {
+                if (annotation instanceof LogUser) {
+                    Object[] args = joinPoint.getArgs();
+                    Object value = args[paramIndex];
+                    logInfo.setAccountInfo(value.toString());
+                }
+            }
+        }
+        //获取注解上的值
+        LogRequire logRequire = null;
+        logRequire = this.getLogRequire(target, method);
+        //从接口初始化
+        if (logRequire == null) {
+            for (Class<?> clazz : target.getInterfaces()) {
+                logRequire = getLogRequire(clazz, method);
+                if (logRequire != null) {
+                    break;//从某个接口中一旦发现注解，不再循环
+                }
+            }
+        }
+
+        if (logRequire != null && (!StringUtils.isEmpty(logRequire.operationExplain())) && (!StringUtils.isEmpty(logRequire.operationFunction())) && (!StringUtils.isEmpty(logRequire.operationModel()))) {
+            ////调用日志处理类去处理我们的日志
+            logInfo.setOperationModel(logRequire.operationModel());
+            logInfo.setOperationFunction(logRequire.operationFunction());
+            logInfo.setOperationExplain(logRequire.operationExplain());
+            logInfo.setIp(this.getIp());
+            logInfo.setOperationTime(new Date());
+            logService.saveLog(logInfo);
+        }
 
 
-
-     }
+    }
 
     /**
      * 获取方法或类的注解对象DataSource
+     *
      * @param target
      * @param method
      * @return

@@ -15,7 +15,7 @@ public interface BookService {
 	 * @param bookId
 	 * @return
 	 */
-	Book getById(long bookId);
+	Book getById(long bookId,String userName);
 
 	/**
 	 * 查询所有图书

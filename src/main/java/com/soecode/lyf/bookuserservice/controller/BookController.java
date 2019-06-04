@@ -28,10 +28,10 @@ public class BookController {
         return list;
     }
 
-    @GetMapping(value = "/detail/{bookId}")
+    @GetMapping(value = "/detail/{bookId}/{userName}")
     @ApiOperation(value = "根据书的id获取书的详情", notes = "根据书的id获取书的详情", produces = MediaType.APPLICATION_JSON_VALUE)
-    private Book detail(@PathVariable("bookId") Long bookId) {
-        Book book = bookService.getById(bookId);
+    private Book detail(@PathVariable("bookId") Long bookId,@PathVariable("userName") String  userName ){
+        Book book = bookService.getById(bookId, userName);
         return book;
     }
 

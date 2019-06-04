@@ -5,6 +5,7 @@ import com.soecode.lyf.bookuserservice.pojo.Book;
 import com.soecode.lyf.bookuserservice.service.BookService;
 import com.soecode.lyf.datasource.DataSource;
 import com.soecode.lyf.log.annatation.LogRequire;
+import com.soecode.lyf.log.annatation.LogUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class BookServiceImpl implements BookService {
 	@Override
 	@DataSource("dataSource1")
 	@LogRequire(operationModel = "book",operationFunction = "根据书的id查询book",operationExplain = "查询操作")
-	public Book getById(long bookId) {
+	public Book getById(long bookId,@LogUser String  userName) {
 		return bookDao.queryById(bookId);
 	}
 
