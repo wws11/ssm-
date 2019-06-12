@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:security="http://www.springframework.org/schema/security"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+          http://www.springframework.org/schema/security
+          http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+	<!-- intercept-url 定义了一个权限控制的规则。pattern 属性表示我们将对哪些 url 进行权限控制，
+	其也可以是一个正则表达式，如上的写法表示我们将对所有的 URL 进行权限控制；access 属性表示在请求
+	对应的 URL 时需要什么权限，默认配置时它应该是一个以逗号分隔的角色列表，请求的用户只需拥有其中
+	的一个角色就能成功访问对应的 URL。这里的 “ROLE_USER” 表示请求的用户应当具有 ROLEUSER 角色。
+	“ROLE” 前缀是一个提示 Spring 使用基于角色的检查的标记。-->
+	<!--<security:http auto-config="true">  &lt;!&ndash; 这个配置成true的时候spring会为我们自动生成登录页面&ndash;&gt;
+		<security:intercept-url pattern="/**" access="ROLE_USER"/>
+	</security:http>
+
+	&lt;!&ndash; 定义一个 AuthenticationManager 用于认证&ndash;&gt;
+	<security:authentication-manager>
+		&lt;!&ndash; 权限提供者-  默认情况下需要authentiation-provider对应一个DaoAuthenticationProvider，
+		其需要 UserDetailsService（对应 user-service 元素）来获取用户信息 UserDetails（对应 user 元素）&ndash;&gt;
+		<security:authentication-provider>
+			<security:user-service>
+				&lt;!&ndash; 通过user元素定义用户，实际上用户信息是需要从数据库的地方获取。&ndash;&gt;
+				<security:user name="user" password="user" authorities="ROLE_USER"/>
+				&lt;!&ndash; 用户名，用户密码，用户所拥有的权限&ndash;&gt;
+				<security:user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN"/>
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>-->
+	<security:http auto-config="true">
+		<security:intercept-url pattern="/**" access="ROLE_USER"/>
+	</security:http>
+
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user name="user" password="user" authorities="ROLE_USER"/>
+				<security:user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN"/>
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
+</beans>

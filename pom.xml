@@ -10,6 +10,7 @@
     <properties>
         <!-- spring版本号 -->
         <spring.version>4.3.12.RELEASE</spring.version>
+        <security.version>3.2.0.RELEASE</security.version>
       <!--  <jackson.version>2.9.1</jackson.version>-->
 
     </properties>
@@ -201,10 +202,29 @@
             <artifactId>zookeeper</artifactId>
             <version>3.4.6</version>
         </dependency>
+        <!-- json工具-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.32</version>
+        </dependency>
+        <!-- 引入spring security-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${security.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${security.version}</version>
         </dependency>
 
         <!-- disconf -->

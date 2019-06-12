@@ -26,8 +26,10 @@ public class BookController {
     @ApiOperation(notes = "获取所有的书", value = "获取所有的书", produces = MediaType.APPLICATION_JSON_VALUE)
     private List<Book> list() throws ParamInvalidException {
       /* if(1==1){
-           throw new ParamInvalidException("校验状态吗成功");
+           throw new ParamInvalidException("异常处理成功");
        }*/
+      /*String  str=null;
+      str.toString();*/
         List<Book> list = bookService.getList();
         return list;
     }
