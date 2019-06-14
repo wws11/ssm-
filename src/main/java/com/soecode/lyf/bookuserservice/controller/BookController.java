@@ -41,4 +41,25 @@ public class BookController {
         return book;
     }
 
+    public static String buildSuccessResultStr(Object result) {
+        if (null == result) {
+            return "{\"msg\": \"success\",\"code\": " + 200 + ",\"result\":  " + result + "}";
+        }
+        return "{\"msg\": \"success\",\"code\": " + 200 + ",\"result\": \"" + result.toString().replaceAll("\"","\\\"") + "\"}";
+    }
+
+
+
+
+    @GetMapping(value = "/test")
+    @ApiOperation(value = "ceshi", notes = "测试", produces = MediaType.APPLICATION_JSON_VALUE)
+    public  String test( ){
+
+        String ss = "\"sadas\"";
+        String  str="fdgdgdr";
+        String s = buildSuccessResultStr(str.replaceAll("\"", "\\\\\""));
+        System.out.println(s);
+        return   s;
+    }
+
 }
