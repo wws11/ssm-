@@ -227,24 +227,13 @@
             <version>${security.version}</version>
         </dependency>
 
-        <!-- disconf -->
-        <!--  <dependency>
-              <groupId>com.baidu.disconf</groupId>
-              <artifactId>disconf-client</artifactId>
-              <version>2.6.35</version>
-          </dependency>
-  -->
-        <!-- jackson相关-->
-       <!-- <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
+
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>-->
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.2</version>
+        </dependency>
+
 
     </dependencies>
     <build>

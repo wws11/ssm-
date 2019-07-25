@@ -1,6 +1,7 @@
 package com.soecode.lyf.bookuserservice.service;
 
 import com.soecode.lyf.bookuserservice.pojo.Book;
+import com.soecode.lyf.exception.ParamInvalidException;
 
 import java.util.List;
 
@@ -24,6 +25,14 @@ public interface BookService {
 	 */
 	List<Book> getList();
 
+	void   testException() throws ParamInvalidException;
+
+
+	/**
+	 * 插入100万本图书
+	 */
+
+	void batchSaveBook();
 
 
 }
