@@ -1,13 +1,10 @@
 package com.soecode.lyf.bookuserservice.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.soecode.lyf.bookuserservice.pojo.Book;
 import com.soecode.lyf.bookuserservice.service.BookService;
 import com.soecode.lyf.exception.ParamInvalidException;
-import com.soecode.lyf.tools.zk.HttpClientUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +24,6 @@ import java.util.List;
 @CrossOrigin
 @Api(value = "swagger测试测试")
 @RequestMapping("/book")
-@Slf4j
 public class BookController {
 
     private final static Logger logger = LoggerFactory.getLogger(BookController.class);
@@ -38,12 +34,10 @@ public class BookController {
     @ApiOperation(notes = "获取所有的书", value = "获取所有的书", produces = MediaType.APPLICATION_JSON_VALUE)
     private List<Book> list() throws ParamInvalidException {
         try {
-            JSONObject jsonObject = HttpClientUtils.httpGet("http://192.168.3.227:8080/cas-client/restlogin/getSysTemUrl");
-            System.out.println(jsonObject.toJSONString());
             List<Book> list = bookService.getList();
             return list;
         } catch (Exception e) {
-            log.error("查找错误", e);
+            logger.error("查询所有书接口错误。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。",e);
             throw e;
         }
     }
@@ -78,6 +72,12 @@ public class BookController {
             // bookService.testException();
         } catch (Exception e) {
             logger.error("test error  }", e);
+            logger.info("DemoTest----info");
+
+            logger.info("DemoTest----debugger");
+            logger.warn("Demotest -----warn");
+            logger.trace("DemoTest----trace");
+
             throw e;
         }
 

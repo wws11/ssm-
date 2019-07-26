@@ -36,6 +36,9 @@ public class BookServiceImpl implements BookService {
     @DataSource("dataSource1")
     @LogRequire(operationModel = "books", operationFunction = "查询所有的书", operationExplain = "查询所有的书")
     public List<Book> getList() {
+        if(1==1){
+            throw  new  IllegalArgumentException("参数校验出错");
+        }
         return bookDao.queryAll(0, 1000);
     }
 
