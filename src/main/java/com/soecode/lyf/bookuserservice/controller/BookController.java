@@ -3,6 +3,7 @@ package com.soecode.lyf.bookuserservice.controller;
 import com.soecode.lyf.bookuserservice.pojo.Book;
 import com.soecode.lyf.bookuserservice.service.BookService;
 import com.soecode.lyf.exception.ParamInvalidException;
+import com.soecode.lyf.unzip.FileOper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -61,11 +63,11 @@ public class BookController {
     @GetMapping(value = "/test")
     @ApiOperation(value = "ceshi", notes = "测试", produces = MediaType.APPLICATION_JSON_VALUE)
     public void test() throws Exception {
-    /*
+        /* *//*
         String ss = "\"sadas\"";
         String  str="fdgdgdr";
         String s = buildSuccessResultStr(str.replaceAll("\"", "\\\\\""));
-        System.out.println(s);*/
+        System.out.println(s);*//*
 
         try {
             // 这种异常处理方式 前端也会接受到，日志也会打印
@@ -79,7 +81,8 @@ public class BookController {
             logger.trace("DemoTest----trace");
 
             throw e;
-        }
+        }*/
+        FileOper. decompressZip(new File("/home/file/GYViewData.zip"),"/home/file/aaa");
 
     }
 

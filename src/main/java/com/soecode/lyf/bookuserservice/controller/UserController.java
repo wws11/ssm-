@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,15 +25,14 @@ import java.util.List;
 @Api(value = "swagger测试测试")
 @RequestMapping("/user")
 public class UserController {
-@Autowired
-private UserService userService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping(value = "/getUserByid/{id}", method = RequestMethod.GET)
     @ApiOperation(notes = "根于用户id获取用户",value = "根据用户id获取用户",produces = MediaType.APPLICATION_JSON_VALUE)
-    private User getUserById(@PathVariable  String  id) {
+    private User getUserById(@PathVariable  String  id) throws IOException {
         User user = userService.getUserById(id);
         return user;
-
     }
 
 
@@ -83,7 +83,7 @@ private UserService userService;
 
 
 
-List<Book> linkList=new LinkedList<>();
+        List<Book> linkList=new LinkedList<>();
         System.out.println("array list顺序");
         books.forEach(e->{
             linkList.add(e);
