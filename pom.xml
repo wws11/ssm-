@@ -267,11 +267,11 @@
             <version>4.6.3</version>
         </dependency>
 
-        <dependency>
+       <!-- <dependency>
             <groupId>com.jacob</groupId>
             <artifactId>jacob</artifactId>
             <version>1.19</version>
-        </dependency>
+        </dependency>-->
     </dependencies>
     <build>
         <finalName>ssm</finalName>
