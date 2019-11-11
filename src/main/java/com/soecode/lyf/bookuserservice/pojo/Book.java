@@ -2,8 +2,11 @@ package com.soecode.lyf.bookuserservice.pojo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 
 /**
  * @Description
@@ -13,7 +16,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Book {
+@Builder
+public class Book implements Serializable {
 
     private Integer id;
     @ApiModelProperty("图书名称")

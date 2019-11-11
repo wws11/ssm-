@@ -3,7 +3,7 @@ package com.soecode.lyf.bookuserservice.controller;
 import com.soecode.lyf.bookuserservice.pojo.Book;
 import com.soecode.lyf.bookuserservice.service.BookService;
 import com.soecode.lyf.exception.ParamInvalidException;
-import com.soecode.lyf.unzip.FileOper;
+import com.soecode.lyf.demo.unzip.FileOper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -34,7 +34,7 @@ public class BookController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ApiOperation(notes = "获取所有的书", value = "获取所有的书", produces = MediaType.APPLICATION_JSON_VALUE)
-    private List<Book> list() throws ParamInvalidException {
+    public List<Book>list() throws ParamInvalidException {
         try {
             List<Book> list = bookService.getList();
             return list;
@@ -47,8 +47,12 @@ public class BookController {
     @GetMapping(value = "/detail/{bookId}/{userName}")
     @ApiOperation(value = "根据书的id获取书的详情", notes = "根据书的id获取书的详情", produces = MediaType.APPLICATION_JSON_VALUE)
     private Book detail(@PathVariable("bookId") Long bookId, @PathVariable("userName") String userName) {
-        Book book = bookService.getById(bookId, userName);
-        return book;
+       // Book book = bookService.getById(bookId, userName);
+        Book  book=new Book();
+        book.setName("ddd");
+        book.setNumber(23);
+        book.setId(1);
+    return book;
     }
 
 

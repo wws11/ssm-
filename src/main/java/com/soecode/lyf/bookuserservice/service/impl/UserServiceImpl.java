@@ -19,7 +19,7 @@ public class UserServiceImpl   implements UserService {
     private AccountDao accountDao;
 
     @Override
-    @DataSource("dataSource2")
+    @DataSource("dataSource1")
     public User getUserById(String id) {
         return accountDao.getUserById(id);
     }

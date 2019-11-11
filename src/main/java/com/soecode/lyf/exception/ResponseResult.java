@@ -1,12 +1,10 @@
 package com.soecode.lyf.exception;
 
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Data;
 @Data
 @Builder
-@ApiModel(value = "ResponseResult", discriminator = "ͨ通用返回信息", subTypes = {ResponseResult.class})
 public class ResponseResult<T> {
     @ApiModelProperty("状态码")
     private int code;
