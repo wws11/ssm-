@@ -1,4 +1,4 @@
-package com.soecode.lyf.bookuserservice.pojo;
+package com.soecode.lyf.book.pojo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -24,9 +24,6 @@ public class Book implements Serializable {
     private String name;
     @ApiModelProperty("馆藏数量")
     private int number;
-
-
-
 
     @Override
     public String toString() {

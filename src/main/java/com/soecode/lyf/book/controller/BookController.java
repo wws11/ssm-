@@ -1,7 +1,7 @@
-package com.soecode.lyf.bookuserservice.controller;
+package com.soecode.lyf.book.controller;
 
-import com.soecode.lyf.bookuserservice.pojo.Book;
-import com.soecode.lyf.bookuserservice.service.BookService;
+import com.soecode.lyf.book.pojo.Book;
+import com.soecode.lyf.book.service.BookService;
 import com.soecode.lyf.exception.ParamInvalidException;
 import com.soecode.lyf.demo.unzip.FileOper;
 import io.swagger.annotations.Api;
@@ -52,6 +52,9 @@ public class BookController {
         book.setName("ddd");
         book.setNumber(23);
         book.setId(1);
+        if(1 == 1){
+            throw new  RuntimeException("测试中文乱码");
+        }
     return book;
     }
 

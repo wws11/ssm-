@@ -1,6 +1,6 @@
 package com.soecode.lyf.demo.unzip;
 
-import com.soecode.lyf.bookuserservice.pojo.Book;
+import com.soecode.lyf.book.pojo.Book;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,6 +1,6 @@
 package com.soecode.lyf.demo.test;
 
-import com.soecode.lyf.bookuserservice.pojo.Book;
+import com.soecode.lyf.book.pojo.Book;
 import org.junit.Test;
 
 import java.util.*;

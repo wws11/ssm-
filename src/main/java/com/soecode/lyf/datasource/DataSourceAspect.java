@@ -31,7 +31,7 @@ public class DataSourceAspect {
     /**
      * 切入点 service包及子孙包下的所有类
      */
-    @Pointcut("execution(* com.soecode.lyf.bookuserservice..*.*(..))")
+    @Pointcut("execution(* com.soecode.lyf.book..*.*(..))")
     public void aspect() {
     }
 

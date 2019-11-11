@@ -1,6 +1,6 @@
 package com.soecode.lyf.demo.test.java8;
 
-import com.soecode.lyf.bookuserservice.pojo.Book;
+import com.soecode.lyf.book.pojo.Book;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;

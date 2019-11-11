@@ -1,8 +1,8 @@
-package com.soecode.lyf.bookuserservice.service.impl;
+package com.soecode.lyf.book.service.impl;
 
-import com.soecode.lyf.bookuserservice.dao.BookDao;
-import com.soecode.lyf.bookuserservice.pojo.Book;
-import com.soecode.lyf.bookuserservice.service.BookService;
+import com.soecode.lyf.book.dao.BookDao;
+import com.soecode.lyf.book.pojo.Book;
+import com.soecode.lyf.book.service.BookService;
 import com.soecode.lyf.datasource.DataSource;
 import com.soecode.lyf.exception.ParamInvalidException;
 import com.soecode.lyf.log.annatation.LogRequire;

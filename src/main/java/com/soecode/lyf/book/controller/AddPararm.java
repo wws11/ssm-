@@ -1,4 +1,4 @@
-package com.soecode.lyf.bookuserservice.controller;
+package com.soecode.lyf.book.controller;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;

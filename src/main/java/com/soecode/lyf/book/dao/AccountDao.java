@@ -1,6 +1,6 @@
-package com.soecode.lyf.bookuserservice.dao;
+package com.soecode.lyf.book.dao;
 
-import com.soecode.lyf.bookuserservice.pojo.User;
+import com.soecode.lyf.book.pojo.User;
 import org.apache.ibatis.annotations.Param;
 
 

@@ -1,8 +1,8 @@
-package com.soecode.lyf.bookuserservice.service.impl;
+package com.soecode.lyf.book.service.impl;
 
-import com.soecode.lyf.bookuserservice.dao.AccountDao;
-import com.soecode.lyf.bookuserservice.pojo.User;
-import com.soecode.lyf.bookuserservice.service.UserService;
+import com.soecode.lyf.book.dao.AccountDao;
+import com.soecode.lyf.book.pojo.User;
+import com.soecode.lyf.book.service.UserService;
 import com.soecode.lyf.datasource.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

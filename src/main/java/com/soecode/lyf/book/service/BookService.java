@@ -1,6 +1,6 @@
-package com.soecode.lyf.bookuserservice.service;
+package com.soecode.lyf.book.service;
 
-import com.soecode.lyf.bookuserservice.pojo.Book;
+import com.soecode.lyf.book.pojo.Book;
 import com.soecode.lyf.exception.ParamInvalidException;
 
 import java.util.List;
