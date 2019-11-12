@@ -1,4 +1,4 @@
-package com.soecode.lyf.demo.test.java8.effectivejava.noInvalidObject;
+package com.soecode.lyf.demo.test.effectivejava.noInvalidObject;
 
 import java.util.regex.Pattern;
 

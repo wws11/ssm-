@@ -12,4 +12,5 @@ public class SortTest {
         Collator instance = Collator.getInstance(Locale.CHINA);
         return instance.compare(o1.getRealName(), o2.getRealName());
     });*/
+
 }

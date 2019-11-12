@@ -47,14 +47,7 @@ public class BookController {
     @GetMapping(value = "/detail/{bookId}/{userName}")
     @ApiOperation(value = "根据书的id获取书的详情", notes = "根据书的id获取书的详情", produces = MediaType.APPLICATION_JSON_VALUE)
     private Book detail(@PathVariable("bookId") Long bookId, @PathVariable("userName") String userName) {
-       // Book book = bookService.getById(bookId, userName);
-        Book  book=new Book();
-        book.setName("ddd");
-        book.setNumber(23);
-        book.setId(1);
-        if(1 == 1){
-            throw new  RuntimeException("测试中文乱码");
-        }
+        Book book = bookService.getById(bookId, userName);
     return book;
     }
 
