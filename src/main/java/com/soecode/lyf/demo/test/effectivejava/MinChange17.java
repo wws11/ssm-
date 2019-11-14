@@ -8,7 +8,7 @@ package com.soecode.lyf.demo.test.effectivejava;
  * @author 魏文思
  * @date 2019/11/12$ 16:05$
  */
-public class MinChange {
+public class MinChange17 {
     //总之公共类不应该暴露不可变属性的危害虽然仍然存在问题，但其危害较小。
     //然而有时候需要包级别或者私有内部类来暴露属性，无论此类是否是可变的。
     // 关于使用内部类暴露属性的研究后面在研究再次记录一下！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！重要重要
@@ -18,7 +18,7 @@ public class MinChange {
     public final int hour;
     public final int minute;
 
-    public MinChange(int hour, int minute) {
+    public MinChange17(int hour, int minute) {
         if (hour < 0 || hour >= HOURS_PER_DAY)
         {
             throw new IllegalArgumentException("Hour: " + hour);
