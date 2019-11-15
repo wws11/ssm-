@@ -35,6 +35,9 @@ public class Server {
             message.setQos(qos);
             sampleClient.publish(topic,message);
             System.out.println("Message Publiched");
+            sampleClient.disconnect();
+            System.out.println("Disconect");
+            System.exit(0);
         } catch (MqttException me) {
             System.out.println("reason" + me.getReasonCode());
             System.out.println("msg" + me.getMessage());
