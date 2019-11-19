@@ -2,6 +2,7 @@ package com.soecode.lyf.demo.test.effectivejava.bean;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**Comparable 接口
  * @author 魏文思
@@ -9,9 +10,10 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class User/* implements Comparable<User>*/ {
     private String name;
-    private int age;
+    private Integer age;
 
     /*@Override
     public int compareTo(User o) {
