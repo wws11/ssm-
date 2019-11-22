@@ -1,13 +1,17 @@
 package com.soecode.lyf.demo.test.java8;
 
+import com.soecode.lyf.demo.test.effectivejava.bean.User;
 import org.junit.Test;
 
 import java.util.function.Consumer;
+import java.util.function.Function;
 
-/** Consumer 接受T没有返回类型提供一个对象，需要拿这个对象去做一些事情，并不关心最终有无返回值。
-    （g）->{
-       这里需要别人提供了一个这样的对象再去做事情
- }
+/**
+ * Consumer 接受T没有返回类型提供一个对象，需要拿这个对象去做一些事情，并不关心最终有无返回值。
+ * （g）->{
+ * 这里需要别人提供了一个这样的对象再去做事情
+ * }
+ *
  * @author 魏文思
  * @date 2019/11/9$ 11:36$
  */
@@ -33,6 +37,20 @@ public class ConcumeTest {
     public void spentMoneyAndLog(Goods goods, Consumer<Goods> consumer) {
         Consumer<Goods> logConsumer = (g) -> System.out.println("买" + g.getGoodsName() + "用了" + g.getCost() + "元！");
         consumer.andThen(logConsumer).accept(goods);
+    }
+
+    @Test
+    public void testCon() {
+
+        User user = new User();
+        user.setAge(19);
+        user.setName("zhangsan");
+        Function<User, String> function = User::getName;
+        helloFunc(User::getAge,user);
+    }
+
+    public void helloFunc(Function<User, Integer> userFunction,User  user) {
+        System.out.println(userFunction.apply(user));
     }
 
 }

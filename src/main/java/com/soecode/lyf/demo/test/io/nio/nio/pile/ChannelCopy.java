@@ -1,8 +1,11 @@
 package com.soecode.lyf.demo.test.io.nio.nio.pile;
 
+import org.junit.Test;
+
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.Channels;
+import java.nio.channels.Pipe;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.channels.WritableByteChannel;
 
@@ -55,6 +58,33 @@ public class ChannelCopy {
 // Make the buffer empty, ready for filling
             buffer.clear();
         }
+    }
+
+    @Test
+    public void testPipe() throws IOException {
+        String str = "测试数据";
+        //创建管道
+        Pipe pipe = Pipe.open();
+        //向管道写输入
+        Pipe.SinkChannel sink = pipe.sink();
+        //通过 SinkChannel的write（）方法写数据
+        ByteBuffer buffer = ByteBuffer.allocate(1024);
+        buffer.clear();
+        buffer.put(str.getBytes());
+        buffer.flip();
+        while (buffer.hasRemaining()){
+            sink.write(buffer);
+        }
+    }
+
+    @Test
+    public   void  test2() throws IOException {
+        //创建管道
+        Pipe pipe = Pipe.open();
+        Pipe.SourceChannel source = pipe.source();
+        ByteBuffer buffer = ByteBuffer.allocate(1024);
+        source.read(buffer);
+
     }
 
 }
