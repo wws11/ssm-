@@ -8,6 +8,8 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.LineBasedFrameDecoder;
+import io.netty.handler.codec.string.StringDecoder;
 
 /**
  * @author 魏文思
@@ -43,14 +45,11 @@ public class TimeServer {
              * 完成之后Netty会返回一个ChannelFuture，它的功能类似于jdkjdk current 包里面的Future,主要用于异步操作的通知回调。
              */
             ChannelFuture f = b.bind(port).sync();
-            //等待服务端监听
-            // 端口关闭
+            //等待服务端监听 端口关闭
             /**
              * 调用f.channel().closeFuture().sync()来进行阻塞，等待服务端链路关闭之后main函数才退出
              */
-            System.out.println("1");
             f.channel().closeFuture().sync();
-            System.out.println("2");
         } catch (Exception e) {
 
             e.printStackTrace();
@@ -69,7 +68,10 @@ public class TimeServer {
     private class ChildChannelHanler extends ChannelInitializer<SocketChannel> {
         @Override
         protected void initChannel(SocketChannel socketChannel) throws Exception {
+           socketChannel.pipeline().addLast(new LineBasedFrameDecoder(1024));
+            socketChannel.pipeline().addLast(new StringDecoder());
             socketChannel.pipeline().addLast(new TimeServerHandler());
+
         }
     }
 

@@ -18,6 +18,7 @@ import java.util.Date;
  * @date 2019/11/22$ 10:06$
  */
 public class TimeServerHandler extends ChannelHandlerAdapter {
+    private  int  counter;
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         /**
@@ -26,14 +27,15 @@ public class TimeServerHandler extends ChannelHandlerAdapter {
          * 根据可读的字节数创建byte数组，通过Bytebuf的readBytes方法将缓冲区中的字节数组复制到新建的byte数组中，最后通过new String的构造函数获取请求消息。
          * 这时对请求消息进行判断，如果是QUERY TIME ORDER 则创建应答消息，通过ChannelHandlerContent的write方法异步发送应答消息给客户端。
          */
-        ByteBuf buf = (ByteBuf) msg;
-        byte[] req = new byte[buf.readableBytes()];
-        buf.readBytes(req);
-        String body = new String(req, "UTF-8");
-        System.out.println("the  time server receive order :" + body);
+        String body = (String) msg;
+        /**
+         * 解决粘包拆包问题，每读到一条消息，就统计一次，然后发送应答消息给客户端。服务端客户端接收到的消息一致
+         */
+        System.out.println("the  time server receive order ;" + body+"the counter is :"+ ++counter);
         String currentTime = "QUERY TIME ORDER".equalsIgnoreCase(body) ? new Date(System.currentTimeMillis()).toString() : "BAD ORDER";
+        currentTime=currentTime+System.getProperty("line.separator");
         ByteBuf resp = Unpooled.copiedBuffer(currentTime.getBytes());
-        ctx.write(resp);
+        ctx.writeAndFlush(resp);
     }
 
     @Override

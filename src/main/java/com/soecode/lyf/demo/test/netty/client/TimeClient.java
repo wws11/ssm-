@@ -8,6 +8,8 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.LineBasedFrameDecoder;
+import io.netty.handler.codec.string.StringDecoder;
 
 /**
  * netty的客户端
@@ -28,6 +30,8 @@ public class TimeClient {
                     .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         public void initChannel(SocketChannel channel)  {
+                            channel.pipeline().addLast(new LineBasedFrameDecoder(1024));
+                            channel.pipeline().addLast(new StringDecoder());
                             channel.pipeline().addLast(new TimeClientHandler());
                         }
                     });
@@ -54,7 +58,6 @@ public class TimeClient {
             }
         }
         new TimeClient().connect(port, "127.0.0.1");
-        System.out.println("----------------end");
     }
 
 }
