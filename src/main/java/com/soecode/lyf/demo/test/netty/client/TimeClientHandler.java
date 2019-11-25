@@ -31,11 +31,12 @@ public class TimeClientHandler extends ChannelHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         ctx.writeAndFlush(firstMessage);
-        log.info("dddd");
+        log.info("调用了 netty客户端处理器的适配器 的channelActive 方法");
     }
 
     /**
      * 当服务端返回应答消息时，channelRead方法被调用，将消息打印
+     *
      * @param ctx
      * @param msg
      * @throws Exception
