@@ -54,7 +54,7 @@ public class TimeClientHandler extends ChannelHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         //拿到的已经是解码之后的应答消息了
         String body = (String) msg;
-        System.out.println("Now is :" + body+"；the counter is :"+ ++counter);
+        System.out.println("Now is :" + body + "；the counter is :" + ++counter);
     }
 
     /**
@@ -68,6 +68,13 @@ public class TimeClientHandler extends ChannelHandlerAdapter {
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         //释放资源
         log.warn("Unexceped exception from  downstream :" + cause.getMessage());
+        String s = "";
         ctx.close();
+
     }
+
+    public static void main(String[] args) {
+
+    }
+
 }
