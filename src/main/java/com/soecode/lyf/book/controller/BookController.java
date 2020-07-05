@@ -116,5 +116,9 @@ public class BookController {
         System.out.println("hello");
         return "ok";
     }
+    @PostMapping("testttt")
+    public  void  test222(){
+
+    }
 
 }
